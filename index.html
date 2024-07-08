@@ -133,7 +133,9 @@
         orbitCamera.lowerBetaLimit = 0;
         orbitCamera.lowerRadiusLimit = 450;
         orbitCamera.upperBetaLimit = 1.4;
-        orbitCamera.upperRadiusLimit = 550;
+        orbitCamera.upperRadiusLimit = 680;
+
+        orbitCamera.position = new BABYLON.Vector3(-300, 300, -600);
 
         var light = new BABYLON.HemisphericLight(
           "light1",
@@ -232,7 +234,9 @@
             meshes[0].receiveShadows = true;
             body = meshes;
 
-            animationGroups[0].start(true);
+            animationGroups[0].stop();
+
+            animationGroups[0].start(true, 1, 0, 101);
           }
         );
         // setInterval(() => {
@@ -247,7 +251,7 @@
           },
           scene
         );
-        ground.position.y = 1;
+        ground.position.y = -10;
 
         ground.receiveShadows = true;
         ground.material = fadeOut;
@@ -270,7 +274,9 @@
               light1.excludedMeshes.push(meshes[i]);
             }
 
-            animationGroups[0].start(true);
+            animationGroups[0].stop();
+
+            animationGroups[0].start(true, 1, 0, 101);
             console.log(animationGroups);
 
             skelleton = meshes;
@@ -300,12 +306,13 @@
         BABYLON.SceneLoader.ImportMesh(
           "",
           "",
-          "Teretanka_1.glb",
+          "Interior 62.glb",
           scene,
           (meshes, particleSystem, skeleton, animationGroups) => {
-            meshes[0].scaling = new BABYLON.Vector3(-260, 260, 260);
+            meshes[0].scaling = new BABYLON.Vector3(-75, 75, 75);
             console.log(meshes);
-            meshes[0].position.y = 0;
+            meshes[0].position.y = 400;
+            meshes[0].rotation = new BABYLON.Vector3(0, Math.PI / 2, 0);
           }
         );
 
